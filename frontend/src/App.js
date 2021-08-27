@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import LandingPage from './components/landingPage/LandingPage';
 
 function App() {
   return (
-    <h1>Flipr</h1>
+      <LandingPage/>
   );
 }
 
