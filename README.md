@@ -1,11 +1,11 @@
 # Google-Classroom-Clone
 -Frontend is built with Reactjs and Backend is built with Django Rest Framework.
-##Installation-
+## Installation-
 -`https://github.com/ankur12-1610/Google-Classroom-Clone.git`
-###For Frontend-
+### For Frontend-
 -`cd frontend`
 -`npm run`
-###For Backend-
+### For Backend-
 -Make sure you have `python 3.8` installed in the system.
 -`cd backend`
 -`pip install pipenv`
