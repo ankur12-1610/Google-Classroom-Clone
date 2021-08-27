@@ -2,6 +2,8 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 // import "bootstrap/dist/css/bootstrap.min.css"
 import "./styles/LandingPage.css"
+import { Link } from 'react-router-dom';
+// import { Button } from 'react-bootstrap';
 
 export default function LandingPage() {
     return (
@@ -13,8 +15,8 @@ export default function LandingPage() {
             </div>
             <div>
                 <div class="SL">
-                    <button className="SLButton text">Login</button>
-                    <button className="SLButton text">Sign Up</button>
+                    <Button as={Link} to="/login" className="SLButton text">Login</Button>
+                    <Button as={Link} to="/signup" className="SLButton text">Sign Up</Button>
                 </div>
             </div>
             
