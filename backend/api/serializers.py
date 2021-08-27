@@ -1,29 +1,25 @@
 from rest_framework import serializers
-from .models import Todo
+from .models import *
+from django.contrib.auth.models import User
+from authentication.serializers import *
 
-
-"""
-TODO:
-Create the appropriate Serializer class(es) for implementing
-Todo GET (List and Detail), PUT, PATCH and DELETE.
-"""
-
-
-class TodoCreateSerializer(serializers.ModelSerializer):
-    """
-    TODO:
-    Currently, the /todo/create/ endpoint returns only 200 status code,
-    after successful Todo creation.
-
-    Modify the below code (if required), so that this endpoint would
-    also return the serialized Todo data (id etc.), alongwith 200 status code.
-    """
-    def save(self, **kwargs):
-        data = self.validated_data
-        user = self.context['request'].user
-        title = data['title']
-        todo = Todo.objects.create(creator=user, title=title)
-    
+class ClassroomCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Todo
+        model = Classroom
         fields = ('id', 'title',)
+
+class ClassroomViewSerializer(serializers.ModelSerializer):
+    teacher = serializers.CharField(source = 'teacher.username', required = False, read_only = True)
+    teacher_id = serializers.IntegerField(source = 'teacher.id', required = False, read_only = True)
+    class Meta:
+        model = Classroom
+        fields = ('id', 'title','teacher', 'teacher_id')
+
+class StudentSerializer(serializers.ModelSerializer):
+    classroom = serializers.CharField(source = 'classroom.title', required = False, read_only = True)
+    classroom_id = serializers.IntegerField(source = 'classroom.id', required = False, read_only = True)
+    student_id = serializers.IntegerField(source = 'id', required = False, read_only = True)
+    class Meta:
+        model = Student
+        fields = ('student_id','classroom','classroom_id','students',)
+

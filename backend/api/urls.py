@@ -1,12 +1,12 @@
-from django.urls import path
-from .views import TodoCreateView
+from django.db import router
+from django.urls import path, include
+from .views import *
+from rest_framework import routers
 
-"""
-TODO:
-Add the urlpatterns of the endpoints, required for implementing
-Todo GET (List and Detail), PUT, PATCH and DELETE.
-"""
+router = routers.SimpleRouter()
+router.register(r'students', StudentListViewSet, basename='student')
+router.register(r'classroom', ClassroomViewSet, basename='classroom')
 
 urlpatterns = [
-    path('todo/create/', TodoCreateView.as_view()),
+    path(r'', include(router.urls)),
 ]
