@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Signup from './components/signup/signup';
 import Login from './components/login/login';
+import LandingPage from './components/landingPage/LandingPage';
 import { Route, Switch, withRouter, Redirect} from 'react-router-dom';
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Signup/>
+        </Route>
+        <Route exact path="/">
+          <LandingPage/>
         </Route>
       </Switch>
     </div>
