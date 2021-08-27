@@ -1,0 +1,21 @@
+.formdiv {
+    /* min-width: 60%; */
+    max-width: 90%;
+}
+.containerdiv {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formheaders {
+    border-bottom: 1px solid black;
+    margin-bottom: 25px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap');
+
+
+body{
+  font-family: 'Cormorant Garamond', serif;
+}

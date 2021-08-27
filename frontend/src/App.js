@@ -1,10 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import Signup from './components/signup/signup';
+import Login from './components/login/login';
+import { Route, Switch, withRouter, Redirect} from 'react-router-dom';
 
 function App() {
   return (
-    <h1>Flipr</h1>
+    <div>
+      <Switch>
+        <Route exact path="/login">
+          <Login/>
+        </Route>
+        <Route exact path="/signup">
+          <Signup/>
+        </Route>
+      </Switch>
+    </div>
   );
 }
 
-export default App;
+export default withRouter(App);
