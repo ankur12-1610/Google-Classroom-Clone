@@ -1,0 +1,67 @@
+@media (max-width: 1024px) {
+    .HomePageBG{
+        background-image: url( "../img/bgmobile.png") ;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr 9fr ;
+        grid-gap: 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .HomePageBG{
+        background-image: url( "../img/bg.jpg") ;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr 9fr ;
+        grid-gap: 10px;
+    }
+}
+
+.HomePageHeading{
+    color: antiquewhite;
+    padding-left:5% ;
+    padding-top: 22px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 1024px) {
+    .HomePageHeading{
+        padding-top: 27px;
+    }
+}
+
+#HomePageEmptyText{
+    text-align: center;
+    color:antiquewhite ;
+}
+
+@media (min-width: 1024px) {
+    #HomePageContent{
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr;
+        grid-gap: 10px;
+        max-height: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #HomePageContent{
+        display: flex;
+        flex-direction: column;
+        max-height: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
