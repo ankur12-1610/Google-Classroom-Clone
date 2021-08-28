@@ -8,42 +8,50 @@ window.data=[
     {
         "Teacher_Name":"Teacher Name",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 1
     },
     {
         "Teacher_Name":"Sample 1",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 2
     },
     {
         "Teacher_Name":"Sample 2",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 3
     },
     {
         "Teacher_Name":"Sample 3",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 4
     },
     {
         "Teacher_Name":"Sample 4",
         "Subject_Name":"ME102",
-        "Image":"https://www.gstatic.com/webp/gallery/1.jpg"
+        "Image":"https://www.gstatic.com/webp/gallery/1.jpg",
+        "Background_Image": 5
     },
     {
         "Teacher_Name":"Sample 5",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 6
     },
     {
         "Teacher_Name":"Sample 6",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 7
     },
     {
         "Teacher_Name":"Sample 7",
         "Subject_Name":"ME102",
-        "Image":""
+        "Image":"",
+        "Background_Image": 8
     },
 ]
 
@@ -55,7 +63,7 @@ export default function PageContents(props) {
                 window.data.map(
                     function(element,i){
                         return (
-                            <card className="ContentCardDiv"><ContentCards data={window.data[i]}/></card>
+                            <div className="ContentCardDiv"><ContentCards data={window.data[i]}/></div>
                         )
                     }
                 )
@@ -65,11 +73,10 @@ export default function PageContents(props) {
     }
 
     return (
-        <div style={ { overflow:"auto" } }>
+        <div style={ { overflow:"auto" },{height:"100vh"} }>
             <div id="HomePageContent">
                 <RenderCheck/>
             </div>
         </div>
-        
     )
 }

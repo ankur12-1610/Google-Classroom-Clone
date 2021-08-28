@@ -1,29 +1,29 @@
 @media (max-width: 1024px) {
     .HomePageBG{
-        background-image: url( "../img/bgmobile.png") ;
+        /* background-image: url( "../img/bgmobile.png") ;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
-        background-size: cover;
+        background-size: cover; */
         background-attachment: fixed;
         height: 100vh;
-        display: grid;
-        grid-template-rows: 1fr 9fr ;
+        /* display: grid;
+        grid-template-rows: 1fr 9fr ; */
         grid-gap: 10px;
     }
 }
 
 @media (min-width: 1024px) {
     .HomePageBG{
-        background-image: url( "../img/bg.jpg") ;
+        /* background-image: url( "../img/bg.jpg") ;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
-        background-size: cover;
+        background-size: cover; */
         height: 100vh;
-        display: grid;
-        grid-template-rows: 1fr 9fr ;
-        grid-gap: 10px;
+        /* display: grid;
+        grid-template-rows: 1fr 9fr ; */
+        /* grid-gap: 10px; */
     }
 }
 
@@ -32,6 +32,7 @@
     padding-left:5% ;
     padding-top: 22px;
     background-color: rgba(0, 0, 0, 0.6);
+    
 }
 
 @media (max-width: 1024px) {
