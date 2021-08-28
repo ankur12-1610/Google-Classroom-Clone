@@ -12,6 +12,7 @@ django-cors-headers = "*"
 django-heroku = "*"
 gunicorn = "*"
 drf-yasg = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
