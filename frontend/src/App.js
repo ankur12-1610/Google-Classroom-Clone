@@ -6,6 +6,7 @@ import LandingPage from './components/landingPage/LandingPage';
 import { Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import HomePage from './components/homePage/HomePage';
 import NavBar from './components/navbar/navbar';
+import Assignments from './components/assignments/Assignments';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route exact path="/homePage">
           <HomePage/>
+        </Route>
+        <Route exact path="/Assignments">
+          <Assignments/>
         </Route>
       </Switch>
     </div>
