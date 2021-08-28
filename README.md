@@ -9,7 +9,7 @@
 - Make sure you have `python 3.8` installed in the system.
 - `cd backend`
 - `pip install pipenv`
-- `pipenv install --skip-lock`
+- `pipenv install`
 - `pipenv shell`
 - `python manage.py makemigrations`
 - `python manage.py migrate`
