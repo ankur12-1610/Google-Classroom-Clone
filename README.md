@@ -11,7 +11,7 @@
 - `cd backend`
 - `pip install pipenv`
 - `pipenv install`
-- `pipenv shell`
+- `pipenv shell` if this doesn't work use `pipenv run pip install psycopg2` and then use `pipenv shell`
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `python manage.py runserver`
