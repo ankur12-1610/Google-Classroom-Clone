@@ -14,7 +14,7 @@ from django.http import Http404
 
 class ClassroomViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
-    serializer_class = ClassroomViewSerializer
+    serializer_class = ClassroomSerializer
     
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
@@ -23,10 +23,29 @@ class ClassroomViewSet(viewsets.ModelViewSet):
         return Classroom.objects.all()
 
 
-class StudentListViewSet(viewsets.ModelViewSet):
+class StudentViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = StudentSerializer
 
     def get_queryset(self):
         return Student.objects.all()
 
+class AssignmentViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = AssignmentSerializer
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return Assignment.objects.all()
+
+class AssignmentStatusViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = AssignmentStatusSerializer
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return AssignmentStatus.objects.all()
