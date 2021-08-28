@@ -10,8 +10,8 @@
 - Make sure you have `python 3.8` installed in the system.
 - `cd backend`
 - `pip install pipenv`
-- `pipenv install`
-- `pipenv shell` if this doesn't work use `pipenv run pip install psycopg2` and then use `pipenv shell`
+- `pipenv install` if this doesn't work use `pipenv run pip install psycopg2` and then use `pipenv install`
+- `pipenv shell` 
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `python manage.py runserver`
