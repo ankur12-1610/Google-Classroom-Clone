@@ -5,10 +5,12 @@ import Login from './components/login/login';
 import LandingPage from './components/landingPage/LandingPage';
 import { Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import HomePage from './components/homePage/HomePage';
+import NavBar from './components/navbar/navbar';
 
 function App() {
   return (
     <div>
+      <NavBar/>
       <Switch>
         <Route exact path="/login">
           <Login/>
