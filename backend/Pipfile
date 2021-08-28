@@ -12,6 +12,9 @@ django-cors-headers = "*"
 django-heroku = "*"
 gunicorn = "*"
 drf-yasg = "*"
+dj_database_url = "*"
+psycopg2 = "*"
+
 
 
 [requires]
