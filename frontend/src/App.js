@@ -11,10 +11,20 @@ import Assignments from './components/assignments/Assignments';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
+  // const fetchLogin = async function() {
+  //   try {
+
+  //   } catch {
+
+  //   }
+  // } 
+
+
+
   if(loggedIn) {
     return (
       <div>
-        <NavBar/>
+        <NavBar setLoggedIn={setLoggedIn}/>
         <Switch>
           <Route exact path="/homePage">
             <HomePage/>
@@ -33,7 +43,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/login">
-            <Login/>
+            <Login setLoggedIn={setLoggedIn}/>
           </Route>
           <Route exact path="/signup">
             <Signup setLoggedIn={setLoggedIn}/>
