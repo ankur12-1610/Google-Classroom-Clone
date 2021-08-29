@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import {Nav, NavDropdown, Navbar, Container} from 'react-bootstrap'
+import {Nav, NavDropdown, Navbar, Container, Button} from 'react-bootstrap'
 import UserIcon from './user.png'
-import HamburgerIcon from './hamburger.png'
 import Menu from './hamburger/hamburger'
+import { myaxios, authorize } from '../../connections'
 export default function NavBar() {
     // useEffect(() => {
     //     window.onscroll = () => {
@@ -18,6 +18,9 @@ export default function NavBar() {
     //         }
     //     }
     // })
+    const onLogout = async function() {
+        
+    }
     return (
         <Navbar bg="light" variant="light" expand="lg" sticky="top" style={{borderBottom:"3px solid black"}} className="navbar">
             <Container>
@@ -27,7 +30,7 @@ export default function NavBar() {
                     <NavDropdown title={<img src={UserIcon} width="30px" height="30px"/>} id="responsive-nav-dropdown" style={{marginRight:"50px"}}>
                         <NavDropdown.Item href="#action/3.1">Create another account</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+                        <NavDropdown.Item as={Button} onClick={onLogout}>Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Container>

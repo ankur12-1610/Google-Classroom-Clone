@@ -1,39 +1,103 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Button } from 'react-bootstrap'
 import './signup.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Google from './google.png'
 import { Link } from "react-router-dom";
-export default function Signup() {
+import {authorize, myaxios} from '../../connections'
+import { useAlert } from 'react-alert'
+export default function Signup({ setLoggedIn }) {
+    const alert = useAlert()
+    const onSignup = async function(e) {
+        e.preventDefault()
+        const first_name = document.querySelector("#firstname").value
+        const last_name = document.querySelector("#lastname").value
+        const username = document.querySelector("#username").value
+        const email = document.querySelector("#email").value
+        const password = document.querySelector("#password").value
+        const cpassword = document.querySelector("#cpassword").value
+        const data = {
+            first_name,
+            last_name,
+            email,
+            password,
+            username
+        }
+        
+        const options = {
+            method: 'post',
+            url: 'auth/register/', 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data
+        }
+        if(first_name && last_name && username && email && password && cpassword) {
+            if(password == cpassword) {
+                try {
+                    const res = await myaxios(options)
+                    authorize(res.data.token, setLoggedIn)
+                    console.log(res)
+                } catch(err) {
+                    console.log(err)
+                    console.log(err.response)
+                    if(err.response.data.email[0] === "Email already exists!") {
+                        alert.show("An account with this email already exists")
+                    } else {
+                        if(err.response.data.username[0] === "Username already exists!") {
+                            alert.show("This User name is already taken!")
+                        }
+                    }
+                }
+
+            } else {
+                alert.show("Passwords do not match!!")
+            }
+        } else {
+            alert.show("Please provide the required credentials")
+        }        
+
+    }
+
     return (
         <div className="containerdiv">
             <div className="formdiv">
-                <Form>
+                <Form id="#myform">
                     <div className="formheaders" style={{display:"flex", justifyContent:"center"}}>
                         <h2>SignUp</h2>
                     </div>
+                    <Form.Group className="mb-3" controlId="formBasicText">
+                        <Form.Label>First Name: </Form.Label>
+                        <Form.Control type="text" placeholder="Enter First Name" id="firstname" />
+                    </Form.Group>
+                    <br/>
+                    <Form.Group className="mb-3" controlId="formBasicText">
+                        <Form.Label>Last Name: </Form.Label>
+                        <Form.Control type="text" placeholder="Enter Last Name" id="lastname" />
+                    </Form.Group>
+                    <br/>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email: </Form.Label>
-                        <Form.Control type="email" placeholder="Enter UserName" />
+                        <Form.Control type="email" placeholder="Enter Email" id="email" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label>UserName: </Form.Label>
-                        <Form.Control type="text" placeholder="Enter UserName" />
+                        <Form.Control type="text" placeholder="Enter User Name" id="username" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password: </Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" id="password" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Confirm Password: </Form.Label>
-                        <Form.Control type="password" placeholder="Confirm Password" />
+                        <Form.Control type="password" placeholder="Confirm Password" id="cpassword" />
                     </Form.Group>
                     <br/>
                     <div style={{display:"flex", justifyContent:"center"}}>
-                        <Button type="submit">
+                        <Button onClick={onSignup}>
                             Sign Up
                         </Button>
                     </div>
