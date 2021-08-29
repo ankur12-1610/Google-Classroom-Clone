@@ -4,7 +4,50 @@ import './login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Google from '.././signup/google.png'
 import { Link } from "react-router-dom";
-export default function Login() {
+import { myaxios, authorize } from '../../connections'
+import { useAlert } from 'react-alert'
+export default function Login({ setLoggedIn }) {
+    const alert = useAlert()
+
+    const onLogin = async function(e) {
+        e.preventDefault()
+        const username = document.querySelector("#username").value
+        const password = document.querySelector("#password").value
+        
+        const data = {
+            username,
+            password
+        }
+
+        const options = {
+            method: 'post',
+            url: 'auth/login/',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data
+        }
+
+        console.log(data)
+
+        if(username && password) {
+            try {
+                const res = await myaxios(options)
+                authorize(res.data.token, setLoggedIn)
+                localStorage.setItem('token', res.data.token)
+                console.log(res)
+            } catch(err) {
+                console.log(err)
+                console.log(err.response)
+                if(err.response.data.non_field_errors[0] === "Invalid Credentials!") {
+                    alert.show("Account does not exists!")
+                }
+            }
+        } else {
+            alert.show("Please enter the required credentials")
+        }
+    }
+
     return (
         <div className="containerdiv">
             <div className="formdiv">
@@ -14,16 +57,16 @@ export default function Login() {
                     </div>
                     <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label>UserName: </Form.Label>
-                        <Form.Control type="text" placeholder="Enter UserName" />
+                        <Form.Control type="text" placeholder="Enter UserName" id="username" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password: </Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" id="password" />
                     </Form.Group>
                     <br/>
                     <div style={{display:"flex", justifyContent:"center"}}>
-                        <Button type="submit">
+                        <Button onClick={onLogin}>
                             Sign in
                         </Button>
                     </div>

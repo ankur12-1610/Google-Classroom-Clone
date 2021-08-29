@@ -1,33 +1,43 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Nav, NavDropdown, Navbar, Container, Button} from 'react-bootstrap'
 import UserIcon from './user.png'
 import Menu from './hamburger/hamburger'
 import { myaxios, authorize } from '../../connections'
-export default function NavBar() {
-    // useEffect(() => {
-    //     window.onscroll = () => {
-    //         // console.log(document.body.scrollTop, document.documentElement.scrollTop)
-    //         const navbar = document.querySelector(".navbar")
-    //         console.log(navbar)
-    //         if(document.documentElement.scrollTop > 55) {
-    //             navbar.classList.remove("bg-primary")
-    //             navbar.classList.add("bg-red")
-    //         } else {
-    //             navbar.classList.remove("bg-red")
-    //             navbar.classList.add("bg-primary")
-    //         }
-    //     }
-    // })
+export default function NavBar({ setLoggedIn }) {
+    
     const onLogout = async function() {
-        
+        localStorage.removeItem('token')
+        myaxios.defaults.headers.common['Authorization'] = null
+        setLoggedIn(false)
     }
+    const [username, setUsername] = useState("")
+
+    useEffect(() => {
+        const getProfile = async function() {
+            try {
+                const res = await myaxios({
+                    method: "GET",
+                    url: "/auth/profile/",
+                })
+                console.log(res)
+                setUsername(res.data.username)
+            } catch(err) {
+                console.log(err)
+                console.log(err.response)
+            }
+        }
+        getProfile()
+    },[])
+
     return (
         <Navbar bg="light" variant="light" expand="lg" sticky="top" style={{borderBottom:"3px solid black"}} className="navbar">
             <Container>
                 <Navbar.Brand href="#home">{<Menu/>}</Navbar.Brand>
                 {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
                 <Nav>
-                    <NavDropdown title={<img src={UserIcon} width="30px" height="30px"/>} id="responsive-nav-dropdown" style={{marginRight:"50px"}}>
+                    <NavDropdown title={<img src={UserIcon} width="30px" height="30px"/>} id="responsive-nav-dropdown" style={{marginRight:"50px", border:"none"}}>
+                        <NavDropdown.Item style={{fontWeight:"bold"}}>{username}</NavDropdown.Item>
+                        {/* <NavDropdown.Divider /> */}
                         <NavDropdown.Item href="#action/3.1">Create another account</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item as={Button} onClick={onLogout}>Logout</NavDropdown.Item>

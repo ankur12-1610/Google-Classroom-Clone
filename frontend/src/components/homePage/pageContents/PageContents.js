@@ -1,9 +1,10 @@
-import { func } from 'prop-types';
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/HomePage.css"
 import ContentCards from './contentCards/ContentCards';
+import {myaxios, authorize} from '../../../connections'
+import { CoffeeLoading } from 'react-loadingg';
 
-// This variable will be edit afterwards by the backend and proper info about the class teacher and the subject will be inserted
+
 window.data=[
     {
         "Teacher_Name":"Teacher Name",
@@ -57,6 +58,8 @@ window.data=[
 
 export default function PageContents(props) {
 
+    const [isLoaded, setIsLoaded] = useState(false)
+
     function RenderCheck(props){
         if(window.data.length>0){
             return(
@@ -72,11 +75,18 @@ export default function PageContents(props) {
         else{return <h2 id="HomePageEmptyText">No classes to show at this moment</h2>}
     }
 
-    return (
-        <div style={ { overflow:"auto" },{height:"100vh"} }>
-            <div id="HomePageContent">
-                <RenderCheck/>
+    if(isLoaded) {
+        return (
+            <div style={ { overflow:"auto" },{height:"100vh"} }>
+                <div id="HomePageContent">
+                    <RenderCheck/>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <CoffeeLoading/>
+        )
+    }
+
 }
