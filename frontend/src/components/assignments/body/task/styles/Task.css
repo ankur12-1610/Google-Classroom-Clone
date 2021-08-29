@@ -1,0 +1,83 @@
+.Task{
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+}
+
+.Task:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+}
+
+@media (min-width: 1024px) {
+    .Task{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 2%;
+        height: 10%;
+        display: grid;
+        grid-template-columns: 2fr 8fr;
+        /* padding-top: 30px; */
+    }
+
+    .Assignment_Logo_Holder{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    
+    .Assignment_Logo{
+        margin-left: auto;
+        margin-right: auto;
+        vertical-align: middle;
+        width: 50px;
+    }
+
+    .Assignment_Text{
+        display: grid;
+        grid-template-rows: 5fr 5fr;
+    }
+
+    .Assignment_Data{
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr;
+        font-size: x-large;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Task{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 2%;
+        margin-top: 30px;
+        /* height: 10%; */
+        display: grid;
+        grid-template-columns: 3fr 7fr;
+    }
+
+    .Assignment_Logo_Holder{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    
+    .Assignment_Logo{
+        margin-left: auto;
+        margin-right: auto;
+        vertical-align: middle;
+        width: 50px;
+    }
+
+    .Assignment_Text{
+        padding-top: 5px;
+        display: flex;
+        flex-direction: column;
+        /* font-size: xx-larger; */
+    }
+
+    .Assignment_Data{
+        display: flex;
+        flex-direction: column;
+    }
+}
+

@@ -14,6 +14,7 @@ gunicorn = "*"
 drf-yasg = "*"
 dj_database_url = "*"
 psycopg2 = "*"
+dj-database-url = "==0.4.2"
 
 
 

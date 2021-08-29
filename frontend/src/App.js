@@ -6,7 +6,8 @@ import LandingPage from './components/landingPage/LandingPage';
 import { Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import HomePage from './components/homePage/HomePage';
 import NavBar from './components/navbar/navbar';
-// import { withAlert } from 'react-alert'
+import { withAlert } from 'react-alert'
+import Assignments from './components/assignments/Assignments';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route exact path="/homePage">
             <HomePage/>
+          </Route>
+          <Route exact path="/Assignments">
+            <Assignments/>
           </Route>
           <Route exact path="*">
             <HomePage/>
