@@ -5,10 +5,6 @@ import PageContents from './pageContents/PageContents'
 
 export default function HomePage() {
     return (
-        <div className="HomePageBG">
-            {/* <PageHeading/> */}
-            {/* <div></div> */}
-            <PageContents/>
-        </div>
+        <PageContents/>
     )
 }

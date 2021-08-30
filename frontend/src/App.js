@@ -11,6 +11,7 @@ import Assignments from './components/assignments/Assignments';
 import AssignmentOpened from './components/assignments/assignmentOpened/AssignmentOpened';
 import { myaxios, authorize } from './connections'
 import Classroom  from './components/classroom/Classroom.js'
+// import LoginByGoogle from './components/loginByGoogle/LoginByGoogle';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)

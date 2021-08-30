@@ -97,8 +97,8 @@ export default function ContentCards({ data }) {
                     </div>
                 </div>
                 <Card.Body>
-                    <Card.Title>{data.title}</Card.Title>
-                    <Card.Text>{data.teacher}</Card.Text>
+                    <Card.Title style={{fontSize:"30px"}}>{data.title}</Card.Title>
+                    <Card.Text style={{fontSize:"25px"}}>{data.teacher}</Card.Text>
                 </Card.Body>
             </Card>
             </div>
