@@ -10,7 +10,6 @@ export default function AssignmentOpened(data) {
     else{temp="This assignment is graded"}
     return(
         <div>
-            <NavBar/>
             <div className="Assignment_Heading AH">
                 <h1><b>Assignment :</b></h1>
             </div>
