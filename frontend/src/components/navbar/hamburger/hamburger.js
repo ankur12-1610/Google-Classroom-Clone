@@ -42,7 +42,7 @@ export default function Menu() {
             </Button>
             <br/>
             <br/>
-            <Button style={{background:"none", border:"none"}}>
+            {/* <Button style={{background:"none", border:"none"}}>
                 <div style={{display:"flex"}}>
                     <Image src={PlusIcon} width="25px" height="25px" /> 
                     <h4 style={{ marginLeft:"20px", color:"black"}}>
@@ -50,7 +50,7 @@ export default function Menu() {
                     </h4>
                 </div>
             </Button>
-            <br/>
+            <br/> */}
         </Offcanvas.Body>
       </Offcanvas>
     </>

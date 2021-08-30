@@ -74,7 +74,7 @@ export default function ContentCards({ data }) {
         // console.log(data.teacher, title, classroom_color)
     },[])
     return(
-        <Button as={Link} to="#" style={{background:"none", border:"none"}}>
+        <Button as={Link} to="#" style={{background:"none", border:"none", margin:"10px"}}>
             <Card style={{ width: "17rem", color:"white", borderRadius:"10%", height:"15rem" }} className="text-center profilecard" bg="dark">
                 <div style={{display:"flex", justifyContent:"center"}}>
                     <div style={{width:"92px", display:"flex", alignItems:"center", justifyContent:"center"}}>
@@ -89,8 +89,8 @@ export default function ContentCards({ data }) {
                     </div>
                 </div>
                 <Card.Body>
-                    <Card.Title>{data.title}</Card.Title>
-                    <Card.Text>{data.teacher}</Card.Text>
+                    <Card.Title style={{fontSize:"30px"}}>{data.title}</Card.Title>
+                    <Card.Text style={{fontSize:"25px"}}>{data.teacher}</Card.Text>
                 </Card.Body>
             </Card>
         </Button>
