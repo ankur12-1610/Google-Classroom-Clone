@@ -23,6 +23,9 @@ function App() {
           <Route exact path="/Assignments">
             <Assignments/>
           </Route>
+          <Route exact path="/AssignmentDetails">
+            <AssignmentOpened/>
+          </Route>
           <Route exact path="*">
             <HomePage/>
           </Route>
@@ -41,12 +44,6 @@ function App() {
           </Route>
           <Route exact path="/">
             <LandingPage/>
-          </Route>
-          <Route exact path="/Assignments">
-            <Assignments/>
-          </Route>
-          <Route exact path="/AssignmentDetails">
-            <AssignmentOpened/>
           </Route>
           <Route exact path="*">
             <LandingPage/>
