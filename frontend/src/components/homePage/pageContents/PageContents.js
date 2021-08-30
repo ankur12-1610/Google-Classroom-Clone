@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import "../styles/HomePage.css"
+// import "../styles/HomePage.css"
 import ContentCards from './contentCards/ContentCards';
 import {myaxios, authorize} from '../../../connections'
 // import { CoffeeLoading } from 'react-loadingg';
 import { BoxLoading } from 'react-loadingg';
+import { Container } from 'react-bootstrap';
 
 // window.data=[
 //     {
@@ -83,13 +84,17 @@ export default function PageContents(props) {
     function RenderCheck(props){
         if(cards.length>0){
             return(
-                cards.map(
-                    function(element,i){
-                        return (
-                            <div className="ContentCardDiv"><ContentCards data={cards[i]}/></div>
+                <div style={{display:"flex", flexWrap:"wrap", marginTop:"20px", marginLeft:"0", marginRight:"0", justifyContent:"center"}}>
+                    {
+                        cards.map(
+                            function(element,i){
+                                return (
+                                    <ContentCards data={cards[i]}/>
+                                )
+                            }
                         )
                     }
-                )
+                </div>
             )
         }
         else{return <h2 id="HomePageEmptyText">No classes to show at this moment</h2>}
@@ -97,11 +102,12 @@ export default function PageContents(props) {
 
     if(isLoaded) {
         return (
-            <div style={ { overflow:"auto" },{height:"100vh"} }>
-                <div id="HomePageContent">
-                    <RenderCheck/>
-                </div>
-            </div>
+            // <div style={{display:"flex", justifyContent:"center", margin:"20px"}}>
+            //     <RenderCheck/>
+            // </div>
+            <Container className="justify-content-center">
+                <RenderCheck/>
+            </Container>
         )
     } else {
         return (

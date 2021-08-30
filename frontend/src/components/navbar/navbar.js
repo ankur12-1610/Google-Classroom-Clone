@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import {Nav, NavDropdown, Navbar, Container, Button} from 'react-bootstrap'
+import {Nav, NavDropdown, Navbar, Container, Button, Image} from 'react-bootstrap'
 import UserIcon from './user.png'
 import Menu from './hamburger/hamburger'
 import { myaxios, authorize } from '../../connections'
+import './navbar.css'
+import PlusIcon from './hamburger/plus.png'
+import ClassModal from './classModal/classModal'
+import { useHistory } from 'react-router'
+
 export default function NavBar({ setLoggedIn }) {
-    
+    const history = useHistory()
     const onLogout = async function() {
         localStorage.removeItem('token')
         try {
@@ -23,7 +28,11 @@ export default function NavBar({ setLoggedIn }) {
         }
     }
     const [username, setUsername] = useState("")
+    const onCac = () => {
+        onLogout()
+        history.push('/signup')
 
+    }
     useEffect(() => {
         const getProfile = async function() {
             try {
@@ -42,15 +51,18 @@ export default function NavBar({ setLoggedIn }) {
     },[])
 
     return (
-        <Navbar bg="light" variant="light" expand="lg" sticky="top" style={{borderBottom:"3px solid black"}} className="navbar">
-            <Container>
+        <Navbar bg="light" variant="light" expand="lg" sticky="top" style={{borderBottom:"3px solid black", width:"100vw"}} className="navbar">
+            <Container style={{display:"flex", justifyContent:"space-between"}}>
                 <Navbar.Brand href="#home">{<Menu/>}</Navbar.Brand>
                 {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
                 <Nav>
+                    {/* <Button as={ClassModal} variant="outline-dark" style={{marginRight:"30px"}}>
+                        Add Class
+                    </Button> */}
+                    <ClassModal/>
                     <NavDropdown title={<img src={UserIcon} width="30px" height="30px"/>} id="responsive-nav-dropdown" style={{marginRight:"50px", border:"none"}}>
-                        <NavDropdown.Item style={{fontWeight:"bold"}}>{username}</NavDropdown.Item>
-                        {/* <NavDropdown.Divider /> */}
-                        <NavDropdown.Item href="#action/3.1">Create another account</NavDropdown.Item>
+                        <NavDropdown.ItemText style={{fontWeight:"bold", fontSize:"20px", marginBottom:"5px"}}>{username}</NavDropdown.ItemText>
+                        <NavDropdown.Item as={Button} onClick={onCac}>Create another account</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item as={Button} onClick={onLogout}>Logout</NavDropdown.Item>
                     </NavDropdown>
