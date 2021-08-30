@@ -25,7 +25,7 @@ export default function Login({ setLoggedIn }) {
         // var username=res["name"]
         var last_name=""
         for(var i=first_name.length;i>=0;i--){
-            if(first_name[i]==' '){break;}
+            if(first_name[i]===' '){break;}
             else{
                 last_name=last_name+first_name[i];
             }
@@ -33,6 +33,7 @@ export default function Login({ setLoggedIn }) {
         last_name=last_name.substring(9,)
         last_name=reverse(last_name)
         first_name=first_name.substring(0,first_name.length-last_name.length)
+        if(first_name===''){first_name=last_name; last_name=""}
         var username=first_name
         console.log(first_name)
         console.log(last_name)
@@ -92,10 +93,8 @@ export default function Login({ setLoggedIn }) {
                     }
                 }
             }
-           
         }
 
-        
     }
 
 

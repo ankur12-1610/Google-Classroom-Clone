@@ -16,7 +16,8 @@ function MyVerticallyCenteredModal(props) {
         const theme = document.querySelector("#theme").value
         const data = {
             "title": title,
-            "classroom_color": theme 
+            "classroom_color": theme ,
+            "classroom_link": mlink
         }
         console.log(title, mlink, theme)
         if(title && mlink && theme) {

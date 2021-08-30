@@ -69,7 +69,8 @@ export default function PageContents(props) {
                     method: "GET",
                     url: "/classroom/"
                 })
-                console.log(res)
+                console.log("Res");
+                console.log(res.data)
                 setCards(res.data)
                 setIsLoaded(true)
             } catch(err) {
@@ -83,6 +84,7 @@ export default function PageContents(props) {
 
     function RenderCheck(props){
         if(cards.length>0){
+            console.log(cards.length)
             return(
                 <div style={{display:"flex", flexWrap:"wrap", marginTop:"20px", marginLeft:"0", marginRight:"0", justifyContent:"center"}}>
                     {
