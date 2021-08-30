@@ -3,12 +3,14 @@ import Modal from 'react-bootstrap/Modal'
 import { Button, FloatingLabel } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import {myaxios} from '../../../connections'
-import { Redirect } from 'react-router'
+import Validator from 'validator'
+import {useAlert} from 'react-alert'
 
 function MyVerticallyCenteredModal(props) {
+    const alert = useAlert()
     // const [created, setCreated] = useState(false)
     const onCreate = async function(e) {
-        e.preventDefault()
+        // e.preventDefault()
         const title = document.querySelector("#title").value
         const mlink = document.querySelector("#mlink").value
         const theme = document.querySelector("#theme").value
@@ -17,19 +19,29 @@ function MyVerticallyCenteredModal(props) {
             "classroom_color": theme 
         }
         console.log(title, mlink, theme)
-        try{
-            const res = await myaxios({
-                method: "POST",
-                url: "/classroom/",
-                data
-            })
-            // setCreated(true)
-            console.log(res)
-        } catch(err) {
-            console.log(err.response)
+        if(title && mlink && theme) {
+            if(Validator.isURL(mlink)){
+                try{
+                    const res = await myaxios({
+                        method: "POST",
+                        url: "/classroom/",
+                        data
+                    })
+                    // setCreated(true)
+                    console.log(res)
+                    props.onHide()
+                } catch(err) {
+                    console.log(err.response)
+                }
+            } else {
+                alert.show("Please enter a valid google meet link")
+            }
         }
 
+        // e.preventDefault()
     }
+
+
     return (
         <Modal
         {...props}
@@ -43,7 +55,7 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Title>
         </Modal.Header>
         <Modal.Body style={{fontWeight:"normal", fontSize:"20px"}}>
-            <Form>
+            <Form id="myform">
                 <Form.Group className="mb-3" controlId="formBasicText">
                     <Form.Label>Title:</Form.Label>
                     <Form.Control type="text" placeholder="Subject Name" required id="title"/>
@@ -62,7 +74,7 @@ function MyVerticallyCenteredModal(props) {
                 </FloatingLabel>
                 <br/>
                 <div style={{display:"flex", justifyContent:"flex-end"}}>
-                    <Button variant="primary" onClick={onCreate} style={{marginRight:"5px"}} type="submit"> Create</Button>
+                    <Button variant="primary" style={{marginRight:"5px"}} onClick={onCreate} type="submit"> Create</Button>
                     <Button onClick={props.onHide} variant="danger" style={{marginLeft:"5px"}}>Cancel</Button>
                 </div>
             </Form>

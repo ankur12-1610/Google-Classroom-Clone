@@ -1,5 +1,5 @@
 .bgAssignment{
-    background-color:bisque;
+    background-color: #61cfe6;
     /* height: 50vh; */
     margin-left: 8%;
     margin-right: 8%;
@@ -28,6 +28,6 @@
 
     .Assignment_Submit_Button{
         width: 20%;
-        background-color: blue;
+        background-color: #61cfe6 !important;
     }
 }

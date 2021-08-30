@@ -20,8 +20,8 @@ export default function AssignmentOpened(data) {
                     <p style={{marginBottom:"0px"}}><b>{temp} {"\n"}</b></p>
                     <p style={{marginBottom:"10px"}}><b>Due Date: {window.AssignmentDue_Date} {"\n"}</b></p>
                     <h5 style={{marginBottom:"20px"}}>{window.AssignmentPS}</h5>
-                    <Button style={{marginBottom:"20px"},{marginRight:"12px"}}>Upload</Button>
-                    <Button style={{marginBottom:"20px"},{marginLeft:"2px"}}>Submit</Button>
+                    <Button style={{marginBottom:"20px", marginRight:"12px", backgroundColor:"black", border:"none"}} variant="dark">Upload</Button>
+                    <Button style={{marginBottom:"20px", marginLeft:"2px", backgroundColor:"black", border:"none"}} variant="dark">Submit</Button>
                     <div style={{height:"20px"}}></div>
                 </div>
             </div>

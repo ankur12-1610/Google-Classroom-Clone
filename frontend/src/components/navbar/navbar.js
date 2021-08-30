@@ -7,7 +7,8 @@ import './navbar.css'
 import PlusIcon from './hamburger/plus.png'
 import ClassModal from './classModal/classModal'
 import { useHistory } from 'react-router'
-
+import VectorIcon from '../.././Vector.svg'
+import { Link } from 'react-router-dom'
 export default function NavBar({ setLoggedIn }) {
     const history = useHistory()
     const onLogout = async function() {
@@ -53,7 +54,13 @@ export default function NavBar({ setLoggedIn }) {
     return (
         <Navbar bg="light" variant="light" expand="lg" sticky="top" style={{borderBottom:"3px solid black", width:"100vw"}} className="navbar">
             <Container style={{display:"flex", justifyContent:"space-between"}}>
-                <Navbar.Brand href="#home">{<Menu/>}</Navbar.Brand>
+                <Navbar.Brand>{<div>
+                    <Menu/>
+                    <Link style={{textDecoration:"none"}} to="/">
+                        <Image src={VectorIcon} width="40px" height="40px" style={{marginLeft:"20px"}}  />
+                    </Link>
+
+                </div>}</Navbar.Brand>
                 {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
                 <Nav>
                     {/* <Button as={ClassModal} variant="outline-dark" style={{marginRight:"30px"}}>
