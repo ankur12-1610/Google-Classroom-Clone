@@ -18,4 +18,4 @@ Frontend is built with Reactjs and Backend is built with Django Rest Framework.
 - `python manage.py migrate`
 - `python manage.py runserver`
 
-#### Backend Repo - https://github.com/ankur12-1610/Google-Classroom-Clone-backend
+#### Backend Repo - https://github.com/ankur12-1610/webdev-rookies-backend
