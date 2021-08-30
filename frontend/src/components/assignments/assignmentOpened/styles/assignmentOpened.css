@@ -1,0 +1,33 @@
+.bgAssignment{
+    background-color:bisque;
+    /* height: 50vh; */
+    margin-left: 8%;
+    margin-right: 8%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px;
+}
+
+.bgAssignment:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+}
+
+.AH{
+    margin-top: 3%;
+    margin-bottom: 2%;
+    
+}
+
+@media(min-width:1024){
+    .bgAssignment{
+        display: grid;
+        grid-template-columns: 9fr 1fr;
+        justify-content: center;
+    }
+
+    .Assignment_Submit_Button{
+        width: 20%;
+        background-color: blue;
+    }
+}

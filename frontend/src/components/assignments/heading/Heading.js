@@ -3,8 +3,8 @@ import './styles/Heading.css'
 
 export default function Heading() {
     return (
-        <div className="Assignment_Heading">
-            <h1><b>Assignments</b></h1>
-        </div>
+        <div className="Assignment_Heading ">
+                <h1><b>Assignment :</b></h1>
+            </div>
     )
 }
