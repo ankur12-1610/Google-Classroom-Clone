@@ -12,7 +12,7 @@
     }
 }
 @media (min-width: 1024px) {
-    .Assignment_Heading{
+    .Assignment_Heading{white-space: normal;
         margin-top: 10px;
         margin-bottom:10px;
     }

@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  font-family: 'Cormorant Garamond', serif;
+  
 }
 
 .App-logo {
@@ -43,5 +43,6 @@
 
 
 body{
-  font-family: 'Cormorant Garamond', serif;
+  /* font-family: 'Cormorant Garamond', serif; */
+  font-family: 'Poppins', sans-serif;
 }
