@@ -37,6 +37,7 @@ export default function Signup({ setLoggedIn }) {
                 try {
                     const res = await myaxios(options)
                     authorize(res.data.token, setLoggedIn)
+                    localStorage.setItem('token', res.data.token)
                     console.log(res)
                 } catch(err) {
                     console.log(err)
