@@ -13,7 +13,8 @@ export default function Login({ setLoggedIn }) {
         e.preventDefault()
         const username = document.querySelector("#username").value
         const password = document.querySelector("#password").value
-        
+        const rememberme = document.querySelector("#rememberme").checked
+        console.log(rememberme)
         const data = {
             username,
             password
@@ -34,7 +35,9 @@ export default function Login({ setLoggedIn }) {
             try {
                 const res = await myaxios(options)
                 authorize(res.data.token, setLoggedIn)
-                localStorage.setItem('token', res.data.token)
+                if(rememberme) {
+                    localStorage.setItem('token', res.data.token)
+                }
                 console.log(res)
             } catch(err) {
                 console.log(err)
@@ -63,6 +66,10 @@ export default function Login({ setLoggedIn }) {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password: </Form.Label>
                         <Form.Control type="password" placeholder="Password" id="password" />
+                    </Form.Group>
+                    <br/>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Remember Me" id="rememberme" />
                     </Form.Group>
                     <br/>
                     <div style={{display:"flex", justifyContent:"center"}}>
