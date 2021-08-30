@@ -8,7 +8,9 @@ import HomePage from './components/homePage/HomePage';
 import NavBar from './components/navbar/navbar';
 import { withAlert } from 'react-alert'
 import Assignments from './components/assignments/Assignments';
+import AssignmentOpened from './components/assignments/assignmentOpened/AssignmentOpened';
 import { myaxios, authorize } from './connections'
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -53,6 +55,9 @@ function App() {
           </Route>
           <Route exact path="/Assignments">
             <Assignments/>
+          </Route>
+          <Route exact path="/AssignmentDetails">
+            <AssignmentOpened/>
           </Route>
           <Route exact path="*">
             <HomePage/>

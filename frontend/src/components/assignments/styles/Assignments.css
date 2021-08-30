@@ -1,5 +1,7 @@
 .Assignments{
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 9fr;
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    /* display: grid; */
+    /* grid-template-rows: 1fr 9fr; */
 }
