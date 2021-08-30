@@ -62,6 +62,7 @@ import img0 from "./img/0.jpeg"
 import React, { useEffect, useState } from 'react'
 import {Card, Button} from 'react-bootstrap'
 import "./styles/ContentCards.css"
+import { useHistory } from 'react-router-dom'
 // import Male from  './male.png'
 // import Female from './female.png'
 // import Pnts from './pnts.png'
@@ -70,12 +71,19 @@ import { Link } from 'react-router-dom'
 // import { encodeBase64 } from 'bcryptjs'
 export default function ContentCards({ data }) {
 
-    useEffect(() => {
-        // console.log(data.teacher, title, classroom_color)
-    },[])
+    const [changed, setChanged] = useState(false)
+    const history = useHistory();
+    function handleClick(){
+        window.ClassroomTitle=data.title;
+        window.ClassroomTeacher=data.teacher;
+        history.push(`/Classroom`);
+        setChanged(true)
+        console.log("Clicked")
+    }
     return(
-        <Button as={Link} to="#" style={{background:"none", border:"none"}}>
-            <Card style={{ width: "17rem", color:"white", borderRadius:"10%", height:"15rem" }} className="text-center profilecard" bg="dark">
+        <Button as={Link} to="#" style={{background:"none", border:"none"}} >
+            <div onClick={() => handleClick()}>
+            <Card style={{ width: "17rem", color:"white", borderRadius:"10%", height:"15rem" }} className="text-center profilecard" bg="dark" >
                 <div style={{display:"flex", justifyContent:"center"}}>
                     <div style={{width:"92px", display:"flex", alignItems:"center", justifyContent:"center"}}>
                         <div style={{borderBottom:"1.5px solid white", width:"100%", marginTop:"40px"}}>
@@ -93,6 +101,7 @@ export default function ContentCards({ data }) {
                     <Card.Text>{data.teacher}</Card.Text>
                 </Card.Body>
             </Card>
+            </div>
         </Button>
     )
 }
