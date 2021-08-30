@@ -18,6 +18,7 @@ function MyVerticallyCenteredModal(props) {
             "title": title,
             "classroom_color": theme ,
             "classroom_link": mlink
+
         }
         console.log(title, mlink, theme)
         if(title && mlink && theme) {
