@@ -1,0 +1,22 @@
+.ClassroomHolder{
+    
+    
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 2%; 
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.ClassroomHeading{
+    box-shadow: (149, 157, 165, 0.2) 0px 8px 24px !important;
+    border-radius: 5px;
+    background-color: #0b94af;
+    padding-top: 36px;
+    margin-bottom: 10px;
+    color: antiquewhite;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: (149, 157, 165, 0.2) 0px 8px 24px !important;
+}
