@@ -7,8 +7,20 @@ export default function NavBar({ setLoggedIn }) {
     
     const onLogout = async function() {
         localStorage.removeItem('token')
-        myaxios.defaults.headers.common['Authorization'] = null
-        setLoggedIn(false)
+        try {
+            const res = await myaxios({
+                method: "POST",
+                url: "/auth/logout/"
+            })
+            console.log(res)
+            if(res.data.detail === "Successfully logged out.") {
+                localStorage.removeItem('token')
+                delete myaxios.defaults.headers.common['Authorization']
+                setLoggedIn(false)
+            }
+        } catch(err) {
+            console.log(err.response)
+        }
     }
     const [username, setUsername] = useState("")
 

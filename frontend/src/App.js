@@ -8,16 +8,38 @@ import HomePage from './components/homePage/HomePage';
 import NavBar from './components/navbar/navbar';
 import { withAlert } from 'react-alert'
 import Assignments from './components/assignments/Assignments';
+import { myaxios, authorize } from './connections'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
-  // const fetchLogin = async function() {
-  //   try {
-
-  //   } catch {
-
-  //   }
-  // } 
+  const fetchLogin = async function() {
+    if(localStorage.getItem('token')) {
+      try {
+        authorize(localStorage.getItem('token'), setLoggedIn)
+        const res = await myaxios({
+          method: "GET",
+          url: "/auth/userstatus/"
+        })
+        console.log(res)
+        if(res.status === 200) {
+          return setLoggedIn(true)
+        }
+      } catch(err) {
+        console.log(err.response)
+        if(err.response.status === 400 || err.response.status === 401) {
+          localStorage.removeItem('token')
+          delete myaxios.defaults.headers.common['Authorization']
+          return setLoggedIn(false)
+        }
+      }
+    } else {
+      return setLoggedIn(false)
+    }
+  }
+  
+  useEffect(() => {
+    fetchLogin()
+  },[])
 
 
 
