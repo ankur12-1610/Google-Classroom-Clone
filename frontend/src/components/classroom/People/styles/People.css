@@ -1,0 +1,14 @@
+.PeopleDiv{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;    /* width: 80%; */
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 5fr 100fr;
+}
+
+.PeopleDivColor{
+    background-color: #0b94af;
+    width: 10px;
+}
