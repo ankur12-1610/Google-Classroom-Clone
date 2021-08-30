@@ -1,5 +1,5 @@
-# Google-Classroom-Clone
-#### Frontend is built with Reactjs and Backend is built with Django Rest Framework.
+# Google-Classroom-Clone:
+Frontend is built with Reactjs and Backend is built with Django Rest Framework.
 #### Frontend Server - https://google-classroom-clone-frontendv3.vercel.app/
 #### Backend Server - https://google-classroom-backend.herokuapp.com/
 ## Installation-
