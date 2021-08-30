@@ -6,8 +6,97 @@ import Google from '.././signup/google.png'
 import { Link } from "react-router-dom";
 import { myaxios, authorize } from '../../connections'
 import { useAlert } from 'react-alert'
+import GoogleLogin from "react-google-login";
 export default function Login({ setLoggedIn }) {
     const alert = useAlert()
+
+    const responseGoogle =async (response) =>{
+
+        function reverse(s){
+            return s.split("").reverse().join("");
+        }
+
+        console.log(response);
+        var res = response.profileObj;
+        console.log(res["name"]);
+        var email=res["email"].toString();
+        var first_name=res["name"].toString();
+        var password=res["googleId"]
+        // var username=res["name"]
+        var last_name=""
+        for(var i=first_name.length;i>=0;i--){
+            if(first_name[i]===' '){break;}
+            else{
+                last_name=last_name+first_name[i];
+            }
+        }
+        last_name=last_name.substring(9,)
+        last_name=reverse(last_name)
+        first_name=first_name.substring(0,first_name.length-last_name.length)
+        if(first_name===''){first_name=last_name; last_name=""}
+        var username=first_name
+        console.log(first_name)
+        console.log(last_name)
+        console.log(username);
+        console.log(password);
+        // debugger;
+        // this.signup(response);
+        var data = {
+            username,
+            password
+        }
+
+        var options = {
+            method: 'post',
+            url: 'auth/login/',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data
+        }
+       
+        // if(username && password) {
+            try {
+                const res = await myaxios(options)
+                authorize(res.data.token, setLoggedIn)
+                localStorage.setItem('token', res.data.token)
+                console.log(res)
+            } catch(err) {
+            data = {
+                first_name,
+                last_name,
+                email,
+                password,
+                username
+            }
+            options = {
+                method: 'post',
+                url: 'auth/register/', 
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                data
+            }
+            try {
+                const res = await myaxios(options)
+                authorize(res.data.token, setLoggedIn)
+                localStorage.setItem('token', res.data.token)
+                console.log(res)
+            } catch(err) {
+                console.log(err)
+                console.log(err.response)
+                if(err.response.data.email[0] === "Email already exists!") {
+                    alert.show("An account with this email already exists")
+                } else {
+                    if(err.response.data.username[0] === "Username already exists!") {
+                        alert.show("This User name is already taken!")
+                    }
+                }
+            }
+        }
+
+    }
+
 
     const onLogin = async function(e) {
         e.preventDefault()
@@ -91,7 +180,12 @@ export default function Login({ setLoggedIn }) {
                     </div>
                     
                     <div style={{display:"flex", justifyContent:"center"}}>
-                        <Button variant="primary"><img src={Google} height="20px" width="20px" style={{marginRight:"2px"}}/>Sign in with Google</Button>
+                        {/* <Button variant="primary"><img src={Google} height="20px" width="20px" style={{marginRight:"2px"}}/>Sign in with Google</Button> */}
+                        <GoogleLogin
+                        clientId="949668683105-e5m4vgrqv9dffqlleeb0ponf41t0c1eo.apps.googleusercontent.com"
+                        buttonText="Login with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle} ></GoogleLogin>
                     </div>
                     <br/>
                     <div style={{display:"flex", justifyContent:"flex-end"}}>
