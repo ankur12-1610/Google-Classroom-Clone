@@ -10,18 +10,17 @@ function MyVerticallyCenteredModal(props) {
     const alert = useAlert()
     // const [created, setCreated] = useState(false)
     const onCreate = async function(e) {
-        // e.preventDefault()
+        e.preventDefault()
         const title = document.querySelector("#title").value
         const mlink = document.querySelector("#mlink").value
-        const theme = document.querySelector("#theme").value
+        // const theme = document.querySelector("#theme").value
         const data = {
             "title": title,
-            "classroom_color": theme ,
             "classroom_link": mlink
 
         }
-        console.log(title, mlink, theme)
-        if(title && mlink && theme) {
+        // console.log(title, mlink, theme)
+        if(title && mlink) {
             if(Validator.isURL(mlink)){
                 try{
                     const res = await myaxios({
@@ -32,12 +31,15 @@ function MyVerticallyCenteredModal(props) {
                     // setCreated(true)
                     console.log(res)
                     props.onHide()
+                    window.location.reload()
                 } catch(err) {
                     console.log(err.response)
                 }
             } else {
                 alert.show("Please enter a valid google meet link")
             }
+        } else {
+            alert.show("Please enter all the details")
         }
 
         // e.preventDefault()
@@ -66,14 +68,6 @@ function MyVerticallyCenteredModal(props) {
                     <Form.Label>Meet Link:</Form.Label>
                     <Form.Control type="url" placeholder="https://meet.google.com/xxx-xxx-xxx" required id="mlink"/>
                 </Form.Group>
-                <FloatingLabel controlId="floatingSelect" label="Select Classroom theme:">
-                    <Form.Select aria-label="Floating label select example" id="theme">
-                        <option value="blue">Blue</option>
-                        <option value="red">Red</option>
-                        <option value="green">Green</option>
-                        <option value="purple">Purple</option>
-                    </Form.Select>
-                </FloatingLabel>
                 <br/>
                 <div style={{display:"flex", justifyContent:"flex-end"}}>
                     <Button variant="primary" style={{marginRight:"5px"}} onClick={onCreate} type="submit"> Create</Button>

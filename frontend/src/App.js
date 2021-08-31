@@ -28,7 +28,23 @@ function App() {
         })
         console.log(res)
         if(res.status === 200) {
-          return setLoggedIn(true)
+          try {
+            const res1 = await myaxios({
+                method: "GET",
+                url: "/auth/check/"
+            })
+            console.log(res1)
+            if(res1.data[1].is_teacher) {
+                setRole("teacher")
+                return setLoggedIn(true)
+            } else {
+                setRole("student")
+            }
+  
+          } catch(err) {
+              console.log(err)
+              console.log(err.response)
+          }
         }
       } catch(err) {
         console.log(err.response)

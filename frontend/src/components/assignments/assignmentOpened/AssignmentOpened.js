@@ -58,7 +58,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Body>
       </Modal>
     );
-  }
+}
 
 
 
@@ -81,12 +81,30 @@ export default function AssignmentOpened(data) {
             console.log(res.data[0].assignment_link)
 
         } catch(err) {
-            console.log(err, err.response)
+            console.log(err)
         }
     }
     useEffect(() => {
         getAssignment()
     },[])
+
+    function reverse(s){
+        return s.split("").reverse().join("");
+    }
+    // const ddate = () => {
+    //     let ddata1 = ""
+    //     for(let c in localStorage.AssignmentDue_Date) {
+    //         if(c == "T") {
+    //             break;
+    //         } else {
+    //             console.log(c)
+    //             ddate = ddate + c
+    //         }
+    //     }
+    //     return reverse(ddata1)
+    // }
+    // let dtime = (localStorage.AssignmentDue_Date - ddate)
+    // dtime.replace("T", "")
 
     return(
         <div>
@@ -98,7 +116,7 @@ export default function AssignmentOpened(data) {
                     <h1 style={{paddingTop:"20px"}}><b>{localStorage.AssignmentTopic} {"\n"}</b></h1>
                     <p style={{marginBottom:"0px"}}><b>Subject : {localStorage.AssignmentSubject} {"\n"}</b></p>
                     <p style={{marginBottom:"0px"}}><b>{temp} {"\n"}</b></p>
-                    <p style={{marginBottom:"10px"}}><b>Due Date: {localStorage.AssignmentDue_Date} {"\n"}</b></p>
+                    <p style={{marginBottom:"10px"}}><b>Due Date : {localStorage.AssignmentDue_Date.replace("T", " before ")} {"\n"}</b></p>
                     <h5 style={{marginBottom:"20px"}}>{localStorage.AssignmentPS}</h5>
                     <Button style={{marginBottom:"20px", marginRight:"12px", backgroundColor:"black", border:"none"}} variant="dark" href={alink} target="_parent">View Assignment</Button>
                     <Button style={{marginBottom:"20px", marginLeft:"2px", backgroundColor:"black", border:"none"}} variant="dark" onClick={() => setModalShow(true)}>Submit</Button>
