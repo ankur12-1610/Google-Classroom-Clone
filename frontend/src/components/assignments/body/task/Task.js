@@ -5,17 +5,39 @@ import AssignmentOpened from '../../assignmentOpened/AssignmentOpened'
 import { useHistory } from 'react-router-dom'
 import { Route, Switch, withRouter, Redirect, BrowserRouter} from 'react-router-dom';
 import  NavBar from '../../../../components/navbar/navbar.js'
+import { myaxios } from '../../../../connections'
 
 
 export default function Task(props) {
     const [changed, setChanged] = useState(false)
     const history = useHistory();
+    // console.log("Testing")
+    // const d=JSON.parse(localStorage.Assignments)
+    // console.log(d[0]["Subject"]);
         // AssignmentOpened(props);
     const tempSuject=props.data["Subject"].toString()
     const tempDue_Date=props.data["Due_Date"].toString()
     const tempGraded_Status=props.data["Graded_Status"].toString()
-    const tempPS=props.data["PS"].toString()
     const tempTopic=props.data["Topic"].toString()
+    const tempPS=props.data["PS"].toString()
+    // const tempID=props.data["Assignment_ID"].toString()
+    // async function fetchDetails(){
+    //     var options = {
+    //         method: 'get',
+    //         url: 'assignments/', 
+    //         headers: {
+    //         'Content-Type': 'application/json'
+    //         },
+    //         tempID
+    //     }
+    //     try {
+    //         const res = await myaxios(options)
+    //         console.log("response1")
+    //         console.log(res)
+    //         // tempPS=res
+    //     }catch{}
+    // }
+
     useEffect(() => {
         console.log(props)
     }, [])
@@ -23,11 +45,11 @@ export default function Task(props) {
         history.push(`/AssignmentDetails`);
         setChanged(true)
         // AssignmentOpened(tempSuject)
-        window.AssignmentSubject=tempSuject
-        window.AssignmentTopic=tempTopic
-        window.AssignmentPS=tempPS
-        window.AssignmentDue_Date=tempDue_Date
-        window.AssignmentGraded_Status=tempGraded_Status
+        localStorage.AssignmentSubject=tempSuject
+        localStorage.AssignmentTopic=tempTopic
+        localStorage.AssignmentPS=tempPS
+        localStorage.AssignmentDue_Date=tempDue_Date
+        localStorage.AssignmentGraded_Status=tempGraded_Status
         console.log("hekko")
         // AssignmentOpened(props)
     }

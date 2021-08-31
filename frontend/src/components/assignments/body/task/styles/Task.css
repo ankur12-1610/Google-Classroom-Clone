@@ -39,6 +39,7 @@
     .Assignment_Text{
         display: grid;
         grid-template-rows: 6fr 4fr;
+        padding-right: 10px;
     }
 
     .Assignment_Data{

@@ -24,17 +24,19 @@ export default function Assignments() {
                 console.log(res.data[0]["teacher"]);
                 console.log(res.data[0]["deadline"]);
                 console.log(res.data[0]["score"])
-                window.Assignments=[]
+                const temp1=[]
                 for(var i=0;i<res.data.length;i++){
                     var temp={
                         "Topic":res.data[i]["title"],
                         "Subject":res.data[i]["teacher"],
                         "Due_Date":(res.data[i]["deadline"].toString()).substring(0,19),
                         "Graded_Status":res.data[0]["score"],
-                        "PS":"Sample Problem Statement"
+                        "PS":"Sample Problem Statement",
+                        "Assignment_ID":res.data[i]["id"]
                     }
-                    window.Assignments.push(temp)
+                    temp1.push(temp)
                 }
+                localStorage.Assignments=JSON.stringify(temp1)
             }catch{
 
             }

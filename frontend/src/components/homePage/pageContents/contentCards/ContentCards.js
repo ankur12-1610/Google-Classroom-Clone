@@ -90,7 +90,7 @@ export default function ContentCards({ data }) {
             console.log(res.data[0]["teacher"]);
             console.log(res.data[0]["deadline"]);
             console.log(res.data[0]["score"])
-            window.Assignments=[]
+            const temp1=[]
             for(var i=0;i<res.data.length;i++){
                 var temp={
                     "Topic":res.data[i]["title"],
@@ -99,13 +99,14 @@ export default function ContentCards({ data }) {
                     "Graded_Status":res.data[0]["score"],
                     "PS":"Sample Problem Statement"
                 }
-                window.Assignments.push(temp)
+                temp1.push(temp)
             }
+            localStorage.Assignments=JSON.stringify(temp1)
         }catch{
 
         }
-        window.ClassroomTitle=data.title;
-        window.ClassroomTeacher=data.teacher;
+        localStorage.ClassroomTitle=data.title;
+        localStorage.ClassroomTeacher=data.teacher;
         history.push(`/Classroom`);
         setChanged(true)
         console.log("Clicked")
