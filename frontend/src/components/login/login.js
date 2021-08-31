@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { myaxios, authorize } from '../../connections'
 import { useAlert } from 'react-alert'
 import GoogleLogin from "react-google-login";
-export default function Login({ setLoggedIn }) {
+export default function Login({ setLoggedIn, role, setRole }) {
     const alert = useAlert()
 
     const responseGoogle =async (response) =>{
@@ -93,6 +93,8 @@ export default function Login({ setLoggedIn }) {
                     }
                 }
             }
+
+            
         }
 
     }
@@ -118,7 +120,7 @@ export default function Login({ setLoggedIn }) {
             data
         }
 
-        console.log(data)
+        // console.log(data)
 
         if(username && password) {
             try {
@@ -137,6 +139,22 @@ export default function Login({ setLoggedIn }) {
             }
         } else {
             alert.show("Please enter the required credentials")
+        }
+        try {
+            const res1 = await myaxios({
+                method: "GET",
+                url: "/auth/check/"
+            })
+            console.log(res1)
+            if(res1.data[1].is_teacher) {
+                setRole("teacher")
+            } else {
+                setRole("student")
+            }
+
+        } catch(err) {
+            console.log(err)
+            console.log(err.response)
         }
     }
 

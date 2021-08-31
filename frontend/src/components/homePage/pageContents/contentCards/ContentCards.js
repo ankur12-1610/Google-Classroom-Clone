@@ -105,6 +105,7 @@ export default function ContentCards({ data }) {
         }catch{
 
         }
+        localStorage.ClassroomLink=data.classroom_link;
         localStorage.ClassroomTitle=data.title;
         localStorage.ClassroomTeacher=data.teacher;
         history.push(`/Classroom`);

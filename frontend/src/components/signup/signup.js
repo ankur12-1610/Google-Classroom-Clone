@@ -104,6 +104,10 @@ export default function Signup({ setLoggedIn, role, setRole }) {
         const password = document.querySelector("#password").value
         const cpassword = document.querySelector("#cpassword").value
         const myrole = document.querySelector("#role").value
+        let is_teacher = false
+        if(myrole == "teacher") {
+            is_teacher = true
+        }
         const data = {
             first_name,
             last_name,
@@ -145,7 +149,23 @@ export default function Signup({ setLoggedIn, role, setRole }) {
             }
         } else {
             alert.show("Please provide the required credentials")
-        }        
+        }
+        try {
+            const res1 = await myaxios({
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                url: "/auth/check/",
+                data: {
+                    is_teacher
+                }
+            })
+            console.log(res1)        
+        } catch(err) {
+            console.log(err)
+            console.log(err.response)
+        }
 
     }
 

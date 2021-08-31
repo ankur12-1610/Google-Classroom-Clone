@@ -9,7 +9,32 @@ import ClassModal from './classModal/classModal'
 import { useHistory } from 'react-router'
 import VectorIcon from '../.././Vector.svg'
 import { Link } from 'react-router-dom'
-export default function NavBar({ setLoggedIn, role }) {
+export default function NavBar({ setLoggedIn, role, setRole }) {
+    // const [myrole, setMyrole] = useState("student")
+    // const getRole = async () => {
+    //     try {
+    //         const res1 = await myaxios({
+    //             method: "GET",
+    //             url: "/auth/check/"
+    //         })
+    //         console.log(res1)
+    //         if(res1.data[res1.data.length - 1].is_teacher) {
+    //             console.log(res1.data[res1.data.length - 1].is_teacher)
+    //             setRole("teacher")
+    //             setMyrole("teacher")
+    //         } else {
+    //             setRole("student")
+    //             setMyrole("student")
+    //         }
+
+    //     } catch(err) {
+    //         console.log(err)
+    //         console.log(err.response)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getRole()
+    // },[])
     const history = useHistory()
     const onLogout = async function() {
         localStorage.removeItem('token')
@@ -63,7 +88,7 @@ export default function NavBar({ setLoggedIn, role }) {
                 </div>}</Navbar.Brand>
                 {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
                 <Nav>
-                    {role == "teacher" ? 
+                    {role === "teacher" ? 
                         <ClassModal/>
                         :
                         null
