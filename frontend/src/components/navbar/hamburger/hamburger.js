@@ -44,7 +44,7 @@ export default function Menu() {
             </Button>
             <br/>
             <br/>
-            <Button style={{background:"none", border:"none", width:"100%"}} variant="dark" >
+            <Button style={{background:"none", border:"none", width:"100%"}} variant="dark" as={Link} to="/Assignments">
                 <div style={{display:"flex"}}>
                     <Image src={TodoIcon} width="30px" height="30px" /> 
                     <h4 style={{ marginLeft:"20px", color:"black"}}>

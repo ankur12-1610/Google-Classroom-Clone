@@ -12,8 +12,8 @@
 
 @media (min-width: 1024px) {
     .Task{
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 6%;
+        margin-right: 6%;
         margin-bottom: 2%;
         margin-top: 10px;
         /* height: 10%; */
@@ -43,7 +43,7 @@
 
     .Assignment_Data{
         display: grid;
-        grid-template-columns: 3fr 3fr 3fr;
+        grid-template-columns: 3fr 4fr 3fr;
         font-size: x-large;
     }
 }

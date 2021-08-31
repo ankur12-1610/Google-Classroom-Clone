@@ -63,6 +63,7 @@ import React, { useEffect, useState } from 'react'
 import {Card, Button} from 'react-bootstrap'
 import "./styles/ContentCards.css"
 import { useHistory } from 'react-router-dom'
+import { myaxios } from "../../../../connections"
 // import Male from  './male.png'
 // import Female from './female.png'
 // import Pnts from './pnts.png'
@@ -73,7 +74,36 @@ export default function ContentCards({ data }) {
 
     const [changed, setChanged] = useState(false)
     const history = useHistory();
-    function handleClick(){
+    async function handleClick(){
+        var options = {
+            method: 'get',
+            url: 'assignments/', 
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await myaxios(options)
+            console.log("response")
+            console.log(res.data[0]["title"]);
+            window.exp=res.data;
+            console.log(res.data[0]["teacher"]);
+            console.log(res.data[0]["deadline"]);
+            console.log(res.data[0]["score"])
+            window.Assignments=[]
+            for(var i=0;i<res.data.length;i++){
+                var temp={
+                    "Topic":res.data[i]["title"],
+                    "Subject":data.title,
+                    "Due_Date":(res.data[i]["deadline"].toString()).substring(0,19),
+                    "Graded_Status":res.data[0]["score"],
+                    "PS":"Sample Problem Statement"
+                }
+                window.Assignments.push(temp)
+            }
+        }catch{
+
+        }
         window.ClassroomTitle=data.title;
         window.ClassroomTeacher=data.teacher;
         history.push(`/Classroom`);

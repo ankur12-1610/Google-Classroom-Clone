@@ -206,7 +206,7 @@ export default function Signup({ setLoggedIn }) {
                         {/* <Button variant="primary"><img src={Google} height="20px" width="20px" style={{marginRight:"2px"}} onClick={() => LoginByGoogle()}/>Signup with Google</Button> */}
                         <GoogleLogin
                         clientId="949668683105-e5m4vgrqv9dffqlleeb0ponf41t0c1eo.apps.googleusercontent.com"
-                        buttonText="Login with Google"
+                        buttonText="Sign Up with Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle} ></GoogleLogin>
                     </div>

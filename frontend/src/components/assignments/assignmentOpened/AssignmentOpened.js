@@ -6,7 +6,7 @@ import './styles/assignmentOpened.css'
 
 export default function AssignmentOpened(data) {
     var temp=""
-    if(window.AssignmentGraded_Status=="No"){temp="This assignment is not graded"}
+    if(window.AssignmentGraded_Status=="ungraded"){temp="This assignment is not graded"}
     else{temp="This assignment is graded"}
     return(
         <div>

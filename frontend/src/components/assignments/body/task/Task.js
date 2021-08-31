@@ -51,13 +51,13 @@ export default function Task(props) {
                     <div ><h1 style={{paddingTop:"15px"}}><b>{props.data["Topic"]}</b></h1></div>
                     <div className="Assignment_Data">
                         <div>
-                            <p style={{marginBottom:"0px"}}>Subject : {props.data["Subject"]}</p>
+                            <p style={{marginBottom:"0px",fontSize:"medium"}}>Subject : {props.data["Subject"]}</p>
                         </div>
                         <div>
-                            <p style={{marginBottom:"0px"}}>Due Date : {props.data["Due_Date"]}</p>
+                            <p style={{marginBottom:"0px",fontSize:"medium"}}>Due Date : {props.data["Due_Date"]}</p>
                         </div>
                         <div>
-                            <p className="LT" style={{marginBottom:"2px"}}>Graded Status : {props.data["Graded_Status"]}</p>
+                            <p className="LT" style={{marginBottom:"2px",fontSize:"medium"}}>Graded Status : {props.data["Graded_Status"]}</p>
                         </div>
                     </div>
                 </div>
