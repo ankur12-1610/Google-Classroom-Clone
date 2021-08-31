@@ -81,10 +81,6 @@ function MyVerticallyCenteredModal(props) {
                 </div>
             </Form>
         </Modal.Body>
-        {/* <Modal.Footer>
-            <Button variant="primary" onClick={onCreate}> Create</Button>
-            <Button onClick={props.onHide} variant="danger">Cancel</Button>
-        </Modal.Footer> */}
         </Modal>
     );
   }
