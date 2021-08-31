@@ -62,16 +62,25 @@ import img0 from "./img/0.jpeg"
 import React, { useEffect, useState } from 'react'
 import {Card, Button} from 'react-bootstrap'
 import "./styles/ContentCards.css"
-import { useHistory } from 'react-router-dom'
+import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { myaxios } from "../../../../connections"
 // import Male from  './male.png'
 // import Female from './female.png'
 // import Pnts from './pnts.png'
 import { Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Assignments from "../../../assignments/Assignments"
 // import { encodeBase64 } from 'bcryptjs'
 export default function ContentCards({ data }) {
 
+    function compareLargeStrings(a,b){
+        if (a.length !== b.length) {
+             return false;
+        }
+        return a.localeCompare(b) === 0;
+    }
+    
+    const temp1=[]
     const [changed, setChanged] = useState(false)
     const history = useHistory();
     async function handleClick(){
@@ -84,13 +93,12 @@ export default function ContentCards({ data }) {
         }
         try {
             const res = await myaxios(options)
-            console.log("response")
-            console.log(res.data[0]["title"]);
-            window.exp=res.data;
-            console.log(res.data[0]["teacher"]);
-            console.log(res.data[0]["deadline"]);
-            console.log(res.data[0]["score"])
-            const temp1=[]
+            // console.log("response")
+            // console.log(res.data[0]["title"]);
+            // window.exp=res.data;
+            // console.log(res.data[0]["teacher"]);
+            // console.log(res.data[0]["deadline"]);
+            // console.log(res.data[0]["score"])
             for(var i=0;i<res.data.length;i++){
                 var temp={
                     "Topic":res.data[i]["title"],
@@ -99,15 +107,27 @@ export default function ContentCards({ data }) {
                     "Graded_Status":res.data[0]["score"],
                     "PS":"Sample Problem Statement"
                 }
-                temp1.push(temp)
+                if(compareLargeStrings(data.id.toString().trim(),res.data[i]["id"].toString().trim())){temp1.push(temp)} 
             }
-            localStorage.Assignments=JSON.stringify(temp1)
+            localStorage.Assignments1=JSON.stringify(temp1)
         }catch{
 
         }
+        // console.log("Data")
+        localStorage.ClassroomLink=data.classroom_link;
         localStorage.ClassroomTitle=data.title;
         localStorage.ClassroomTeacher=data.teacher;
+        // return(
+        //     <>
+        //     <BrowserRouter>
+        //     <Route path="/Assignments" component={() => (<Assignments data={temp1} />)}/>
+        //     <Link to={Assignments}/>
+
+        //     </BrowserRouter>
+        //     </>
+        // )
         history.push(`/Classroom`);
+        
         setChanged(true)
         console.log("Clicked")
     }

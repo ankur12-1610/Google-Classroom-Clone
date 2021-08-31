@@ -1,12 +1,27 @@
-import React,{ useLayoutEffect } from 'react'
+import React,{ useLayoutEffect, useEffect } from 'react'
 import NavBar from '../navbar/navbar'
 import Body from './body/Body'
 import Heading from './heading/Heading'
 import './styles/Assignments.css'
 import { myaxios, authorize } from '../../connections.js'
 
-export default function Assignments() {
+export default function Assignments(props) {
 
+    useEffect(() => {
+        // window.location.reload()
+        window.onload = function() {
+            if(!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+    }, [])
+    // localStorage.itr=1;
+    // if(localStorage.itr<2){
+    //     localStorage.itr=2;
+    //     // window.location.reload()
+    // }
+    const temp1=[]
     useLayoutEffect(() => {
         async function fetchData(){
             var options = {
@@ -24,7 +39,7 @@ export default function Assignments() {
                 console.log(res.data[0]["teacher"]);
                 console.log(res.data[0]["deadline"]);
                 console.log(res.data[0]["score"])
-                const temp1=[]
+                
                 for(var i=0;i<res.data.length;i++){
                     var temp={
                         "Topic":res.data[i]["title"],
@@ -36,13 +51,19 @@ export default function Assignments() {
                     }
                     temp1.push(temp)
                 }
+                localStorage.removeItem("Assignments")
                 localStorage.Assignments=JSON.stringify(temp1)
+                // window.onload = function() {
+                //     if(!window.location.hash) {
+                //         window.location = window.location + '#loaded';
+                //         window.location.reload();
+                //     }
+                // }
             }catch{
 
             }
         }
             fetchData();
-            
     }, [])
     // fetchAssignments()
     return (
@@ -50,9 +71,8 @@ export default function Assignments() {
         <div>
             {/* <NavBar/> */}
             <div className="Assignments">
-                
                 <Heading/>
-                <Body/>
+                <Body data={temp1}/>
             </div>
         </div>
         

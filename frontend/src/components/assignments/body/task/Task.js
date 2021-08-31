@@ -15,11 +15,15 @@ export default function Task(props) {
     // const d=JSON.parse(localStorage.Assignments)
     // console.log(d[0]["Subject"]);
         // AssignmentOpened(props);
-    const tempSuject=props.data["Subject"].toString()
+    // const d=JSON.parse(localStorage.temp);
+    // console.log("d")
+    // window.exp=d;
+    const tempSubject=props.data["Subject"]
     const tempDue_Date=props.data["Due_Date"].toString()
     const tempGraded_Status=props.data["Graded_Status"].toString()
     const tempTopic=props.data["Topic"].toString()
     const tempPS=props.data["PS"].toString()
+    // const tempSubject=d
     // const tempID=props.data["Assignment_ID"].toString()
     // async function fetchDetails(){
     //     var options = {
@@ -45,19 +49,19 @@ export default function Task(props) {
         history.push(`/AssignmentDetails`);
         setChanged(true)
         // AssignmentOpened(tempSuject)
-        localStorage.AssignmentSubject=tempSuject
+        localStorage.AssignmentSubject=tempSubject
         localStorage.AssignmentTopic=tempTopic
         localStorage.AssignmentPS=tempPS
         localStorage.AssignmentDue_Date=tempDue_Date
         localStorage.AssignmentGraded_Status=tempGraded_Status
-        console.log("hekko")
+        // console.log("hekko")
         // AssignmentOpened(props)
     }
     if(changed) {
         console.log(props.data["Subject"]);
         return (
 
-            <AssignmentOpened data={tempSuject}/>
+            <AssignmentOpened data={tempSubject}/>
         )
     } else {
         

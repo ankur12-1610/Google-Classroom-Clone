@@ -2,7 +2,7 @@ import React from 'react'
 import { Tabs,Tab,Button } from 'react-bootstrap'
 import Assignments from '../assignments/Assignments'
 import './styles/Classroom.css'
-import Body from '../assignments/body/Body'
+import Body from './assignments/body/Body'
 import People from './People/People'
 
 window.Assignments=[
@@ -74,9 +74,10 @@ export default function Classroom() {
     return (
         <div>
             <div className="ClassroomHolder"> 
-                <div className="ClassroomHeading">
+                <div className="ClassroomHeading" style={{color:"white"}}>
                     <h1 style={{marginBottom:"0px"}}>{localStorage.ClassroomTitle}{"\n"}</h1>
                     <h3>{localStorage.ClassroomTeacher}</h3>
+                    <p><a href={localStorage.ClassroomLink} style={{color:"white"}}>{localStorage.ClassroomLink}</a></p>
                 </div>
                 <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
                 <Tab eventKey="home" title="Assignments">

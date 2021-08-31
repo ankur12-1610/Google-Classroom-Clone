@@ -1,6 +1,7 @@
 .ClassroomHolder{
     
-    
+    overflow: hidden;
+    padding-right: 10px;
     margin-right: 5%;
     margin-left: 5%;
     margin-top: 5%;
@@ -18,5 +19,6 @@
     padding-bottom: 20px;
     padding-left: 30px;
     padding-right: 30px;
+    word-wrap:break-word;
     box-shadow: (149, 157, 165, 0.2) 0px 8px 24px !important;
 }
