@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 export default function Body() {
     return (
         <>
-        <div style={{marginLeft:"10%",marginBottom:"15px"}}>
+        <div style={{marginLeft:"6%",marginBottom:"15px"}}>
             <Button variant="outline-info" style={{color:"black"}}>Create Assignment</Button>
         </div>
         <div>
