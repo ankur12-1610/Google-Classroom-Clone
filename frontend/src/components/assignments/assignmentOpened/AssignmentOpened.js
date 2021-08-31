@@ -6,7 +6,7 @@ import './styles/assignmentOpened.css'
 
 export default function AssignmentOpened(data) {
     var temp=""
-    if(window.AssignmentGraded_Status=="ungraded"){temp="This assignment is not graded"}
+    if(localStorage.AssignmentGraded_Status==="ungraded"){temp="This assignment is not graded"}
     else{temp="This assignment is graded"}
     return(
         <div>
@@ -15,11 +15,11 @@ export default function AssignmentOpened(data) {
             </div>
             <div className="bgAssignment">
                 <div style={{paddingTop:"70px"},{marginLeft:"40px"},{paddingLeft:"10%"}}>
-                    <h1 style={{paddingTop:"20px"}}><b>{window.AssignmentTopic} {"\n"}</b></h1>
-                    <p style={{marginBottom:"0px"}}><b>Subject : {window.AssignmentSubject} {"\n"}</b></p>
+                    <h1 style={{paddingTop:"20px"}}><b>{localStorage.AssignmentTopic} {"\n"}</b></h1>
+                    <p style={{marginBottom:"0px"}}><b>Subject : {localStorage.AssignmentSubject} {"\n"}</b></p>
                     <p style={{marginBottom:"0px"}}><b>{temp} {"\n"}</b></p>
-                    <p style={{marginBottom:"10px"}}><b>Due Date: {window.AssignmentDue_Date} {"\n"}</b></p>
-                    <h5 style={{marginBottom:"20px"}}>{window.AssignmentPS}</h5>
+                    <p style={{marginBottom:"10px"}}><b>Due Date: {localStorage.AssignmentDue_Date} {"\n"}</b></p>
+                    <h5 style={{marginBottom:"20px"}}>{localStorage.AssignmentPS}</h5>
                     <Button style={{marginBottom:"20px", marginRight:"12px", backgroundColor:"black", border:"none"}} variant="dark">Upload</Button>
                     <Button style={{marginBottom:"20px", marginLeft:"2px", backgroundColor:"black", border:"none"}} variant="dark">Submit</Button>
                     <div style={{height:"20px"}}></div>

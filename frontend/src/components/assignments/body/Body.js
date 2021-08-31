@@ -7,14 +7,15 @@ import { Button } from 'react-bootstrap';
 
 
 export default function Body() {
+    const d=JSON.parse(localStorage.Assignments)
     return (
         <>
         <div style={{marginLeft:"6%",marginBottom:"15px"}}>
             <Button variant="outline-info" style={{color:"black"}}>Create Assignment</Button>
         </div>
         <div>
-            {window.Assignments.map(function(name, index){
-                    return <Task data={window.Assignments[index]}/>
+            {d.map(function(name, index){
+                    return <Task data={d[index]}/>
             })}
         </div>
         </>
