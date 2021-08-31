@@ -15,6 +15,7 @@ import Classroom  from './components/classroom/Classroom.js'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [role, setRole] = useState("student")
 
   const fetchLogin = async function() {
     if(localStorage.getItem('token')) {
@@ -50,7 +51,7 @@ function App() {
   if(loggedIn) {
     return (
       <div>
-        <NavBar setLoggedIn={setLoggedIn}/>
+        <NavBar setLoggedIn={setLoggedIn} role={role}/>
         <Switch>
           <Route exact path="/homePage">
             <HomePage/>
@@ -78,7 +79,7 @@ function App() {
             <Login setLoggedIn={setLoggedIn}/>
           </Route>
           <Route exact path="/signup">
-            <Signup setLoggedIn={setLoggedIn}/>
+            <Signup setLoggedIn={setLoggedIn} role={role} setRole={setRole}/>
           </Route>
           <Route exact path="/">
             <LandingPage/>
