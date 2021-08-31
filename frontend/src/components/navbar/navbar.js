@@ -9,7 +9,7 @@ import ClassModal from './classModal/classModal'
 import { useHistory } from 'react-router'
 import VectorIcon from '../.././Vector.svg'
 import { Link } from 'react-router-dom'
-export default function NavBar({ setLoggedIn }) {
+export default function NavBar({ setLoggedIn, role }) {
     const history = useHistory()
     const onLogout = async function() {
         localStorage.removeItem('token')
@@ -63,10 +63,11 @@ export default function NavBar({ setLoggedIn }) {
                 </div>}</Navbar.Brand>
                 {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
                 <Nav>
-                    {/* <Button as={ClassModal} variant="outline-dark" style={{marginRight:"30px"}}>
-                        Add Class
-                    </Button> */}
-                    <ClassModal/>
+                    {role == "teacher" ? 
+                        <ClassModal/>
+                        :
+                        null
+                    }
                     <NavDropdown title={<img src={UserIcon} width="30px" height="30px"/>} id="responsive-nav-dropdown" style={{marginRight:"50px", border:"none"}}>
                         <NavDropdown.ItemText style={{fontWeight:"bold", fontSize:"20px", marginBottom:"5px"}}>{username}</NavDropdown.ItemText>
                         <NavDropdown.Item as={Button} onClick={onCac}>Create another account</NavDropdown.Item>
