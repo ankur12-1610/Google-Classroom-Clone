@@ -108,14 +108,17 @@ export default function ContentCards({ data }) {
         localStorage.ClassroomLink=data.classroom_link;
         localStorage.ClassroomTitle=data.title;
         localStorage.ClassroomTeacher=data.teacher;
+        // localStorage.ClassroomId = data.id
+        // localStorage.setItem('ClassroomId',data.id)
         history.push(`/Classroom`);
         setChanged(true)
-        console.log("Clicked")
+        // console.log("Clicked")
+        // console.log(data.id)
     }
     return(
         <Button as={Link} to="#" style={{background:"none", border:"none"}} >
             <div onClick={() => handleClick()}>
-            <Card style={{ width: "17rem", color:"white", borderRadius:"10%", height:"15rem" }} className="text-center profilecard" bg="dark" >
+            <Card style={{ width: "17rem", color:"white", borderRadius:"10%", minHeight:"15rem" }} className="text-center profilecard" bg="dark" >
                 <div style={{display:"flex", justifyContent:"center"}}>
                     <div style={{width:"92px", display:"flex", alignItems:"center", justifyContent:"center"}}>
                         <div style={{borderBottom:"1.5px solid white", width:"100%", marginTop:"40px"}}>
